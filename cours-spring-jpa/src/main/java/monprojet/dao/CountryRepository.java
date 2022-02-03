@@ -1,11 +1,13 @@
 package monprojet.dao;
 
+import monprojet.dto.PopulationParPays;
 import org.springframework.data.jpa.repository.JpaRepository;
 import monprojet.entity.Country;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import java.util.HashMap;
+import java.util.List;
 
 // This will be AUTO IMPLEMENTED by Spring 
 //
@@ -23,11 +25,11 @@ public interface CountryRepository extends JpaRepository<Country, Integer> {
     public int populationPays(int id);
 
 
-    @Query(value = "SELECT name, SUM(population) " +
+    @Query(value = "SELECT COUNTRY.name, SUM(population) " +
             "FROM CITY " +
             "INNER JOIN COUNTRY ON COUNTRY.id = CITY.country_id " +
-            "GROUP BY name ",
+            "GROUP BY COUNTRY.name ",
             nativeQuery = true)
-    public HashMap<Country,Integer> listePaysEtPopulation();
+    public List<PopulationParPays> populationParPays();
 
 }
