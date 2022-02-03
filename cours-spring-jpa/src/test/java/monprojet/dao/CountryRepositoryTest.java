@@ -51,10 +51,18 @@ public class CountryRepositoryTest {
     @Test
     @Sql("test-data.sql") // On peut charger des donnnées spécifiques pour un test
     void testListePopulationEtPays() {
-        log.info("On vérifie que la fonction retourne le bon pays correspondant à l'id donné en paramètre");
-        System.out.println("++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++=============================================");
-        System.out.println(countryDAO.populationParPays().get(1).getCountry());
-        //assertEquals(12, countryDAO.populationParPays()  );
+        log.info("On vérifie que la fonction retourne bien une liste des pays avec leur population");
+
+        assertEquals("France", countryDAO.populationParPays().get(0).getCountryName()  );
+        assertEquals(12, countryDAO.populationParPays().get(0).getCountryPop()  );
+
+        assertEquals("United Kingdom", countryDAO.populationParPays().get(1).getCountryName()  );
+        assertEquals(18, countryDAO.populationParPays().get(1).getCountryPop()  );
+
+        assertEquals("United States of America", countryDAO.populationParPays().get(2).getCountryName()  );
+        assertEquals(27, countryDAO.populationParPays().get(2).getCountryPop()  );
+
+
     }
 
 
