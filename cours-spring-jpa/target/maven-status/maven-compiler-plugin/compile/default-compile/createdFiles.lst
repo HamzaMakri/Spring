@@ -1,0 +1,5 @@
+monprojet\WebApp.class
+monprojet\entity\Country.class
+monprojet\ConsoleApp.class
+monprojet\dao\CountryRepository.class
+monprojet\entity\City.class
